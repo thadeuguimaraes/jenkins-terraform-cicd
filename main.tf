@@ -5,7 +5,7 @@ resource "aws_instance" "thsre" {
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
   user_data              = base64encode(file("website.sh"))
   tags = {
-    Name = "Aj-EC2"
+    Name = "Th-EC2"
   }
 }
 

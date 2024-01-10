@@ -58,5 +58,10 @@ pipeline{
                 sh 'terraform plan'
             }
         }
+        stage('Terraform action'){
+            steps{
+                sh 'terraform ${action} --auto-approve'
+            }
+        }
     }
 }

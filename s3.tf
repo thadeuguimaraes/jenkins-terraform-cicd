@@ -55,7 +55,7 @@ resource "aws_s3_object" "style" {
 }
 
 resource "aws_s3_object" "script" {
-  bucket       = aws_s3_bucket.mybucket.id
+  bucket       = aws_s3_bucket.mybucket
   key          = "script.js"
   source       = "script.js"
   acl          = "public-read"

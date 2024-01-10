@@ -1,6 +1,6 @@
 # Criação do bucket S3
 resource "aws_s3_bucket" "mybucket" {
-  bucket = var.bucketname.id
+  bucket = var.bucket_name
 }
 
 # Controles de propriedade do bucket

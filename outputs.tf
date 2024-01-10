@@ -1,5 +1,5 @@
 output "websiteendpoint" {
-  value = aws_s3_bucket.example_bucket
+  value = aws_s3_bucket.mybucket
 }
 
 output "public_ip" {

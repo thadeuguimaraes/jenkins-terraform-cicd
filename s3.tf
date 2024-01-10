@@ -1,8 +1,9 @@
-#create s3 bucket
+# Criação do bucket S3
 resource "aws_s3_bucket" "mybucket" {
-  bucket = var.bucket_name
+  bucket = var.bucketname.id
 }
 
+# Controles de propriedade do bucket
 resource "aws_s3_bucket_ownership_controls" "example" {
   bucket = aws_s3_bucket.mybucket.id
 
@@ -11,6 +12,7 @@ resource "aws_s3_bucket_ownership_controls" "example" {
   }
 }
 
+# Configurações de bloqueio de acesso público ao bucket
 resource "aws_s3_bucket_public_access_block" "example" {
   bucket = aws_s3_bucket.mybucket.id
 
@@ -20,6 +22,7 @@ resource "aws_s3_bucket_public_access_block" "example" {
   restrict_public_buckets = false
 }
 
+# Configuração de ACL do bucket
 resource "aws_s3_bucket_acl" "example" {
   depends_on = [
     aws_s3_bucket_ownership_controls.example,
@@ -30,6 +33,7 @@ resource "aws_s3_bucket_acl" "example" {
   acl    = "public-read"
 }
 
+# Configuração de objetos no bucket
 resource "aws_s3_object" "index" {
   bucket       = aws_s3_bucket.mybucket.id
   key          = "index.html"
@@ -62,8 +66,10 @@ resource "aws_s3_object" "script" {
   content_type = "text/javascript"
 }
 
+# Configuração do site estático no bucket
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.mybucket.id
+
   index_document {
     suffix = "index.html"
   }

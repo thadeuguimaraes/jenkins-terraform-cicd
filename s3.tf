@@ -58,7 +58,6 @@ resource "aws_s3_object" "script" {
   bucket       = aws_s3_bucket.mybucket.id
   key          = "script.js"
   source       = "script.js"
-  acl          = "public-read"
   content_type = "text/javascript"
 }
 
